@@ -1,7 +1,7 @@
 {
   "name": "hsv2rgb",
   "description": "convert from hsv/hsb to rgb",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/tmpvar/hsv2rgb.git"
