@@ -16,10 +16,10 @@ function hsv2rgb(h, s, v, out) {
   if (!s) {
     out[0] = out[1] = out[2] = Math.ceil(v * 255);
   } else {
-    var b = ((255 - s) * v)>>8;
+    var b = ((1 - s) * v);
     var vb = v - b;
     var hm = h % 60;
-    switch(Math.ceil(h/60)) {
+    switch((h/60)|0) {
       case 0: set(v, vb * h / 60 + b, b, out); break;
       case 1: set(vb * (60 - hm) / 60 + b, v, b, out); break;
       case 2: set(b, v, vb * hm / 60 + b, out); break;
