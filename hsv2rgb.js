@@ -1,20 +1,31 @@
 // based on http://www.kasperkamperman.com/blog/arduino/arduino-programming-hsb-to-rgb/
 // which is based on http://www.codeproject.com/miscctrl/CPicker.asp
 var TAU = Math.PI*2;
+var round = Math.round;
+var min = Math.min;
+var max = Math.max;
+var ceil = Math.ceil;
 module.exports = hsv2rgb;
 
 function set(r, g, b, out) {
-  out[0] = Math.round(r * 255);
-  out[1] = Math.round(g * 255);
-  out[2] = Math.round(b * 255);
+  out[0] = round(r * 255);
+  out[1] = round(g * 255);
+  out[2] = round(b * 255);
+}
+
+function clamp(v, l, u) {
+  return max(l, min(v, u));
 }
 
 function hsv2rgb(h, s, v, out) {
   out = out || [0, 0, 0];
+  h = h % 360;
+  s = clamp(s, 0, 1);
+  v = clamp(v, 0, 1);
 
   // Grey
   if (!s) {
-    out[0] = out[1] = out[2] = Math.ceil(v * 255);
+    out[0] = out[1] = out[2] = ceil(v * 255);
   } else {
     var b = ((1 - s) * v);
     var vb = v - b;

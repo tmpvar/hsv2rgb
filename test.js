@@ -29,3 +29,12 @@ test('a bunch of common colors', function(t) {
 
   t.end();
 });
+
+test('wrapping on h and clamping on s, v', function(t) {
+  t.deepEqual(hsv(360 + 359, 1.0, 1.0), [255, 0, 4]);
+  t.deepEqual(hsv(360 + 359, 1.0, 2.0), [255, 0, 4]);
+  t.deepEqual(hsv(360 + 359, 2.0, 1.0), [255, 0, 4]);
+  t.deepEqual(hsv(360 + 359, 2.0, 2.0), [255, 0, 4]);
+
+  t.end();
+});
