@@ -1,7 +1,36 @@
 {
+  "name": "hsv2rgb",
+  "description": "convert from hsv/hsb to rgb",
+  "version": "0.0.0",
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmpvar/hsv2rgb.git"
+  },
+  "keywords": [
+    "rgb",
+    "hsv",
+    "hsb",
+    "converter",
+    "colorspace",
+    "hsvtorgb",
+    "hsv2rgb",
+    "hsb2rgb",
+    "hsbtorgb"
+  ],
+  "author": "Elijah Insua <tmpvar@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tmpvar/hsv2rgb/issues"
+  },
+  "homepage": "https://github.com/tmpvar/hsv2rgb",
   "devDependencies": {
     "benchmark": "^1.0.0",
     "tape": "^4.0.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "main": "hsv2rgb.js",
+  "scripts": {
+    "test": "node test.js"
+  }
 }
