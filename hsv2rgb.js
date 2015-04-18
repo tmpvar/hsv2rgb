@@ -1,3 +1,5 @@
+// based on http://www.kasperkamperman.com/blog/arduino/arduino-programming-hsb-to-rgb/
+// which is based on http://www.codeproject.com/miscctrl/CPicker.asp
 var TAU = Math.PI*2;
 module.exports = hsv2rgb;
 
@@ -15,15 +17,16 @@ function hsv2rgb(h, s, v, out) {
     out[0] = out[1] = out[2] = Math.ceil(v * 255);
   } else {
     var b = ((255 - s) * v)>>8;
+    var vb = v - b;
+    var hm = h % 60;
     switch(Math.ceil(h/60)) {
-      case 0: set(v, (((v-b)*h)/60)+b, b, out); break;
-      case 1: set(((v-b)*(60-(h%60)))/60+b, v, b, out); break;
-      case 2: set(b, v, (((v-b)*(h%60))/60)+b, out); break;
-      case 3: set(b, (((v-b)*(60-(h%60)))/60)+b, v, out); break;
-      case 4: set((((v-b)*(h%60))/60)+b, b, v, out); break;
-      case 5: set(v, b, (((v-b)*(60-(h%60)))/60)+b, out); break;
+      case 0: set(v, vb * h / 60 + b, b, out); break;
+      case 1: set(vb * (60 - hm) / 60 + b, v, b, out); break;
+      case 2: set(b, v, vb * hm / 60 + b, out); break;
+      case 3: set(b, vb * (60 - hm) / 60 + b, v, out); break;
+      case 4: set(vb * hm / 60 + b, b, v, out); break;
+      case 5: set(v, b, vb * (60 - hm) / 60 + b, out); break;
     }
   }
   return out;
 }
-
